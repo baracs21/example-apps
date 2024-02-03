@@ -34,7 +34,7 @@ jobs:
         with:
           registry: docker.pkg.github.com
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GH_TOKEN }}
 
       - name: Publish Docker Image to GitHub Packages
         run: docker push ${{ steps.docker_build.outputs.image }}
