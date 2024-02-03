@@ -16,7 +16,8 @@ COPY . .
 #RUN go mod download
 #RUN go mod verify
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -a -installsuffix cgo -o /workdir/app .
+RUN #CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -a -installsuffix cgo -o /workdir/app .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /workdir/app .
 
 ############################
 # STEP 2 build the image
