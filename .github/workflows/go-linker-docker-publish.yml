@@ -28,7 +28,7 @@ jobs:
           docker buildx build --push \
             --platform linux/amd64,linux/arm64 \
             --tag $IMAGE_NAME:$COMMIT_ID \
-            --tag $IMAGE_NAME:latest .
+            --tag $IMAGE_NAME:latest ./go-linker/.
 
       - name: Set up Docker Login
         uses: docker/login-action@v1
