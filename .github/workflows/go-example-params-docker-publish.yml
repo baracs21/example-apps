@@ -1,9 +1,9 @@
-name: go-linker docker publish
+name: go-example-params docker publish
 
 on:
   push:
     paths:
-      - 'go-linker/**'
+      - 'go-example-params/**'
     branches:
       - main
   workflow_dispatch:
@@ -30,12 +30,12 @@ jobs:
         id: docker_build
         run: |
           export COMMIT_ID=$(git rev-parse --short=7 "$GITHUB_SHA")
-          export IMAGE_NAME="ghcr.io/${{ github.repository }}/go-linker"
+          export IMAGE_NAME="ghcr.io/${{ github.repository }}/go-example-params"
           docker buildx create --use
           docker buildx build --push \
             --platform linux/amd64,linux/arm64 \
-            --file go-linker/Dockerfile \
+            --file go-example-params/Dockerfile \
             --label "org.opencontainers.image.source=https://github.com/baracs21/example-apps" \
             --tag $IMAGE_NAME:$COMMIT_ID \
             --tag $IMAGE_NAME:latest \
-            go-linker/.
+            go-example-params/.
